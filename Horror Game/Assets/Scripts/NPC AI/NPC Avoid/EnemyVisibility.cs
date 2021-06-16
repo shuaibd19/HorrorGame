@@ -14,7 +14,9 @@ using UnityEditor;
 /// </summary>
 public class EnemyVisibility : MonoBehaviour
 {
-    [SerializeField] public Transform target = null; //the object we are looking for
+    //[SerializeField] public Transform target = null; //the object we are looking for
+
+    [SerializeField] private Transform[] targets = { };
 
     [Range(1f, 30f), SerializeField] public float maxDistance = 10f; //range of detection
 
@@ -28,7 +30,8 @@ public class EnemyVisibility : MonoBehaviour
     private void Update()
     {
 
-        targetIsVisible = CheckVisibility(target);
+        //targetIsVisible = CheckVisibility(target);
+        targetIsVisible = CheckVisbilityArray(targets);
 
         if (visualise)
         {
@@ -72,11 +75,14 @@ public class EnemyVisibility : MonoBehaviour
         //perform raycast and check for any collisions
         if (Physics.Raycast(ray, out hit, rayDistance))
         {
-
-            if (hit.collider.transform == target)
+            foreach (var target in targets)
             {
-                return true;
+                if (hit.collider.transform == target)
+                {
+                    return true;
+                }
             }
+            
             ////if we hit the target
             //if (hit.collider.transform == target) {
             //    return true;
@@ -149,6 +155,63 @@ public class EnemyVisibility : MonoBehaviour
 
         return canSee;
     }
+
+    public bool CheckVisbilityArray(Transform[] tgts)
+    {
+        //records info about whether the target is in range and not occluded
+        var canSee = false;
+
+        foreach (var target in tgts)
+        {
+            //calculate the direction from our location to the point
+            var directionVector = target.position - transform.position;
+
+            //calculate the number of degrees from the forward direction
+            var degreesToTarget = Vector3.Angle(transform.forward, directionVector);
+
+            //the target is within the arc of detection if it's within
+            //half of the specified angle. If it's not within the arc, it's not visible
+            var withinArc = degreesToTarget < (angle / 2);
+            if (!withinArc)
+            {
+                return false;
+            }
+
+            //figure out the distance to the target
+            var distanceToTarget = directionVector.magnitude;
+
+            //take into account the range of detection
+            var rayDistance = Mathf.Min(maxDistance, distanceToTarget); //return the smaller of the 2 values
+
+            //create a new ray that goes from the current location to the specified direction
+            var ray = new Ray(transform.position, directionVector);
+
+            //storage of ray collision
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, rayDistance))
+            {
+                //did the ray hit the target
+                if (hit.collider.transform == target)
+                {
+                    canSee = true;
+                }
+
+                //visualise the ray
+                Debug.DrawLine(transform.position, hit.point);
+            }
+            else
+            {
+                //the ray didn't hit anything i.e. target out of range
+
+                //visualise the ray
+                Debug.DrawRay(transform.position, directionVector.normalized * rayDistance);
+            }
+
+        }
+        return canSee;
+    }
+
 }
 
 #if UNITY_EDITOR
