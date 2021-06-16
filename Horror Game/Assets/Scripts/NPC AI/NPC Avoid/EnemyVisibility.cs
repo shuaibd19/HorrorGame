@@ -8,13 +8,13 @@ using UnityEditor;
 
 
 /// <summary>
-/// Detects when a fiven target is visible to this object. A target is
+/// Detects when a given target is visible to this object. A target is
 /// visible when it's both in range and in front of the target. Both
 /// the range and the angle of visiblity are configurable
 /// </summary>
 public class EnemyVisibility : MonoBehaviour
 {
-    [SerializeField] public Transform[] targets = null; //the object we are looking for
+    [SerializeField] public Transform target = null; //the object we are looking for
 
     [Range(1f, 30f), SerializeField] public float maxDistance = 10f; //range of detection
 
@@ -27,19 +27,17 @@ public class EnemyVisibility : MonoBehaviour
 
     private void Update()
     {
-        foreach (var target in targets)
+
+        targetIsVisible = CheckVisibility(target);
+
+        if (visualise)
         {
-            targetIsVisible = CheckVisibility(target);
+            //update colour to yellow if it detects target, white if it can't
+            var colour = targetIsVisible ? Color.yellow : Color.white;
 
-            if (visualise)
-            {
-                //update colour to yellow if it detects target, white if it can't
-                var colour = targetIsVisible ? Color.yellow : Color.white;
-
-                GetComponent<Renderer>().material.color = colour; //update the colour of the gameobject through renderer properties
-            }
+            GetComponent<Renderer>().material.color = colour; //update the colour of the gameobject through renderer properties
         }
-        
+
     }
 
     //returns true if this object can see the sepcified position
@@ -72,14 +70,12 @@ public class EnemyVisibility : MonoBehaviour
         RaycastHit hit;
 
         //perform raycast and check for any collisions
-        if(Physics.Raycast(ray, out hit, rayDistance))
+        if (Physics.Raycast(ray, out hit, rayDistance))
         {
-            foreach (var target in targets)
+
+            if (hit.collider.transform == target)
             {
-                if (hit.collider.transform == target)
-                {
-                    return true;
-                }
+                return true;
             }
             ////if we hit the target
             //if (hit.collider.transform == target) {
@@ -88,7 +84,9 @@ public class EnemyVisibility : MonoBehaviour
 
             //if we hit a barrier between us and the target we cannot see the target
             return false;
-        } else {
+        }
+        else
+        {
             //there is an unobstructed line of sight between us and the target
             return true;
         }
@@ -130,10 +128,10 @@ public class EnemyVisibility : MonoBehaviour
         //records info about whether the target is in range and not occluded
         var canSee = false;
 
-        if(Physics.Raycast(ray, out hit, rayDistance))
+        if (Physics.Raycast(ray, out hit, rayDistance))
         {
             //did the ray hit the target
-            if(hit.collider.transform == target)
+            if (hit.collider.transform == target)
             {
                 canSee = true;
             }

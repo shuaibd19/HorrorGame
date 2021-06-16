@@ -58,7 +58,7 @@ public class EnemyAvoider : MonoBehaviour
 
 
     //attemps to find a nearby place where the target can't see us.
-    //returns true iuf one was found; if it was, put the position in the 
+    //returns true if one was found; if it was, put the position in the 
     //hidingSpot variable
     bool FindHidingSpots(out Vector3 hidingSpot)
     {
