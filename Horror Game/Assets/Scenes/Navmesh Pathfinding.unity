@@ -355,7 +355,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &63090630
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -914,7 +914,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &189373337
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &226249581
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1454,7 +1454,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &261992700
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &265136267
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1804,7 +1804,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &283334759
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2917,7 +2917,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &514839696
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3170,7 +3170,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &584090782
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3697,7 +3697,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &709063669
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4364,7 +4364,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &941313204
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4617,7 +4617,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &962384686
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5060,7 +5060,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &1059868382
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5503,7 +5503,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &1151198105
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5661,7 +5661,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &1181717978
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6009,7 +6009,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &1266592702
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6995,7 +6995,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &1475643102
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7298,7 +7298,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &1579126290
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7723,7 +7723,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &1734022437
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7976,7 +7976,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &1762449645
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8419,7 +8419,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &1839113224
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8672,7 +8672,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &1889242436
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9088,7 +9088,7 @@ MonoBehaviour:
   freeRoamDistance: 6
   freeRoamWait: 0
   freeRoamTimePassed: 0
-  visualise: 1
+  visualise: 0
 --- !u!195 &1985987462
 NavMeshAgent:
   m_ObjectHideFlags: 0
