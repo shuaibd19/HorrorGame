@@ -24,6 +24,8 @@ public class EnemyAvoider : MonoBehaviour
     //the navigation agent, which will navigate to the best hiding place
     NavMeshAgent agent;
 
+    public bool playerSee = false;
+
     //the start method is a coroutine; when the game starts it will start
     //a continuous cycle of avoiding the target
     IEnumerator Start()

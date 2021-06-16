@@ -79,6 +79,7 @@ public class EnemyVisibility : MonoBehaviour
             {
                 if (hit.collider.transform == target)
                 {
+                    target.GetComponent<EnemyAvoider>().playerSee = true;
                     return true;
                 }
             }
@@ -164,7 +165,7 @@ public class EnemyVisibility : MonoBehaviour
         foreach (var target in tgts)
         {
             //calculate the direction from our location to the point
-            var directionVector = target.position - transform.position;
+            var directionVector = target.transform.position - transform.position;
 
             //calculate the number of degrees from the forward direction
             var degreesToTarget = Vector3.Angle(transform.forward, directionVector);
@@ -194,6 +195,7 @@ public class EnemyVisibility : MonoBehaviour
                 //did the ray hit the target
                 if (hit.collider.transform == target)
                 {
+                    target.GetComponent<EnemyAvoider>().playerSee = true;
                     canSee = true;
                 }
 
@@ -213,6 +215,7 @@ public class EnemyVisibility : MonoBehaviour
     }
 
 }
+
 
 #if UNITY_EDITOR
 //a custom editor for the enemyvisibility class. Visualises and allows for eiditing 

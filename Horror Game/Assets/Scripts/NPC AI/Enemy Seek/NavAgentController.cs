@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 //script used for controlling a nav mesh agent
-[RequireComponent(typeof(NavAgentController))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class NavAgentController : MonoBehaviour
 {
     //radius of the noise
     [SerializeField] float noiseRadius = 20f;
     //reference to the camera used to shoot rays
     [SerializeField] private Camera cam;
+
     private void Update()
     {
         //move to mouse click
