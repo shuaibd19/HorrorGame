@@ -10,6 +10,7 @@ public class Civilian : MonoBehaviour
     private enum State
     {
         FreeRoam,
+        Searching,
         Flee
     }
 
@@ -21,15 +22,15 @@ public class Civilian : MonoBehaviour
     //field of view distance 
     [SerializeField] private float fovDistance = 20f;
     //field of view angle
-    [SerializeField] private float fovAngle = 45f;
+    [SerializeField] private float fovAngle = 100f;
 
     //search settings
-    [SerializeField] private float searchAreaSize = 30f;
-    [SerializeField] private float searchCellSize = 8f;
+    [SerializeField] private float searchAreaSize = 20f;
+    [SerializeField] private float searchCellSize = 20f;
 
     //free roam settings
-    [SerializeField] private float freeRoamDistance = 20f;
-    [SerializeField] private float freeRoamWait = 6f;
+    [SerializeField] private float freeRoamDistance = 6f;
+    [SerializeField] private float freeRoamWait;
     [SerializeField] private float freeRoamTimePassed = 0f;
 
     //turn visualisation on or off
@@ -40,6 +41,13 @@ public class Civilian : MonoBehaviour
 
     private void Start()
     {
+        int seed = (int)transform.position.x;
+
+        //giving pseudo random generator a seed value 
+        Random.InitState(seed);
+
+        freeRoamWait = Random.Range(5f, 8f);
+
         //cache a reference to our navigation agent
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
@@ -47,7 +55,7 @@ public class Civilian : MonoBehaviour
     private void Update()
     {
         //temporaray variable to see if the state has changed
-        State tempState = currentState;
+        //State tempState = currentState;
 
         if (ICanSeePlayer(player))
         {
@@ -75,10 +83,10 @@ public class Civilian : MonoBehaviour
                 break;
         }
 
-        if (tempState != currentState)
-        {
-            Debug.LogFormat("Civilian's state: {0}", currentState);
-        }
+        //if (tempState != currentState)
+        //{
+        //    Debug.LogFormat("Civilian's state: {0}", currentState);
+        //}
     }
 
     private bool ICanSeePlayer(Transform player)
@@ -181,7 +189,7 @@ public class Civilian : MonoBehaviour
         {
             var searchPoint = point;
 
-            //reposition the points so that the middle of the search
+            //reposition the points so that the middle of the searchs
             //area is at the origin 0,0
             searchPoint.x -= searchAreaSize / 2f;
             searchPoint.y -= searchAreaSize / 2f;
@@ -236,10 +244,10 @@ public class Civilian : MonoBehaviour
         {
             //provide a dummy value
             hidingSpot = Vector3.zero;
-            Debug.Log("Failed to find a hiding spot!");
+            //Debug.Log("Failed to find a hiding spot!");
 
             //indicate a failure 
-            return Vector3.zero;
+            return hidingSpot;
         }
 
 
