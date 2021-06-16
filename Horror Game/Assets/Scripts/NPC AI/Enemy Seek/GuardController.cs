@@ -116,10 +116,6 @@ public class GuardController : MonoBehaviour
 
     private void Chase()
     {
-        //visual cue for chase state
-        var rend = gameObject.GetComponent<Renderer>();
-        rend.material.SetColor("_Color", Color.red);
-
         //this implementation is a bit dumb because it does not take into account
         //the nav mesh dafuq
         this.GetComponent<UnityEngine.AI.NavMeshAgent>().isStopped = true;
@@ -140,12 +136,6 @@ public class GuardController : MonoBehaviour
 
     private void Investigate()
     {
-        //CrowdBehaviour.instance.setPlayerSpotted(true, lastPlaceSeen);
-
-        //visual cue for investigate state
-        var rend = gameObject.GetComponent<Renderer>();
-        rend.material.SetColor("_Color", Color.yellow);
-
         //if the agent arrived at the investigating goal they should patrol there
         if (Vector3.Magnitude(transform.position - lastPlaceSeen) <= 0.5f)
         {
@@ -159,12 +149,6 @@ public class GuardController : MonoBehaviour
 
     private void Patrol()
     {
-        //CrowdBehaviour.instance.setPlayerSpotted(false);
-
-        //visual cue for patrol state
-        var rend = gameObject.GetComponent<Renderer>();
-        rend.material.SetColor("_Color", Color.green);
-
         //accumulate the patrol time
         patrolTimePassed += Time.deltaTime;
 
