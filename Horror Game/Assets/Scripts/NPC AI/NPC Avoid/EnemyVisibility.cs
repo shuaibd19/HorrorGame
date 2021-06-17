@@ -83,7 +83,7 @@ public class EnemyVisibility : MonoBehaviour
                     return true;
                 }
             }
-            
+
             ////if we hit the target
             //if (hit.collider.transform == target) {
             //    return true;
@@ -199,15 +199,25 @@ public class EnemyVisibility : MonoBehaviour
                     canSee = true;
                 }
 
-                //visualise the ray
-                Debug.DrawLine(transform.position, hit.point);
+                if (visualise)
+                {
+                    //visualise the ray
+                    Debug.DrawLine(transform.position, hit.point);
+                }
+
+
             }
             else
             {
-                //the ray didn't hit anything i.e. target out of range
+                if (visualise)
+                {
+                    //the ray didn't hit anything i.e. target out of range
 
-                //visualise the ray
-                Debug.DrawRay(transform.position, directionVector.normalized * rayDistance);
+                    //visualise the ray
+                    Debug.DrawRay(transform.position, directionVector.normalized * rayDistance);
+                }
+
+
             }
 
         }
