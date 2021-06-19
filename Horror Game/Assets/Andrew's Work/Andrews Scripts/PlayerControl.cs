@@ -1,20 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerControl : MonoBehaviour
 {
     private Vector2 target;
     public GameObject doorObj;
     public GameObject itemObj;
+    public GameObject UseObj;
 
     public GameObject ItemSlot1;    //itemslot positions in the inventory (an empty gameobject sits where they are)
 
     private GameObject prefabItem;   //an empty prefab to select them from the switch statement
     public GameObject CircleItem;   //make these images for the inventory screen buttons so you can click and use them
+    private string storedUseItemRef = "";
+
+    public TextMeshProUGUI InspectText;
 
     public Canvas UICanvas;
     bool itemlock = false;
+    public bool itemUseBool = false;
 
     IEnumerator Pickup()
     {
@@ -38,11 +45,26 @@ public class PlayerControl : MonoBehaviour
         itemlock = false;
     }
 
+    public void WhichUseItem(string s)
+    {
+        storedUseItemRef = s;
+        itemUseBool = true;
+    }
+
+    IEnumerator UseTextEnum()
+    {
+        InspectText.enabled = true;
+
+        yield return new WaitForSeconds(3.0f);
+
+        InspectText.enabled = false;
+    }
+
     void Update()
     {
         //Getting the coordinates of the mouseposition in game
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
+
         //Check if the user left clicks and get coords of the click
         if (Input.GetMouseButtonDown(0))
         {
@@ -65,28 +87,71 @@ public class PlayerControl : MonoBehaviour
                 {
                     target = new Vector2(transform.position.x, transform.position.y);    //Nullify movement if you click on the inventory
                 }
+                if (hit.collider.gameObject.tag == "Interactable")
+                {
+                    UseObj = hit.collider.gameObject;   //store the selected world object to use an item on
+                }
             }
         }
         //move player toward target coords
-        transform.position = Vector2.MoveTowards(transform.position, target, Time.deltaTime * 5f);
+        if (!itemUseBool)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target, Time.deltaTime * 5f);
 
-        if (doorObj != null)
-        {
-            if (Vector2.Distance(doorObj.transform.position, transform.position) < 1.2f)    //only do the action when close to door. Just walk to it until then
+            if (doorObj != null)
             {
-                //load scene through doorway
-            }
-        }
-        if (itemObj != null)
-        {
-            if (itemlock == false)
-            {
-                if (Vector2.Distance(itemObj.transform.position, transform.position) < 1.2f)    //only do the action when close to door. Just walk to it until then
+                if (Vector2.Distance(doorObj.transform.position, transform.position) < 1.2f)    //only do the action when close to door. Just walk to it until then
                 {
-                    StartCoroutine(Pickup());
-                    itemlock = true;
+                    //load scene through doorway
                 }
             }
+            if (itemObj != null)
+            {
+                if (itemlock == false)
+                {
+                    if (Vector2.Distance(itemObj.transform.position, transform.position) < 1.2f)    //only do the action when close to door. Just walk to it until then
+                    {
+                        StartCoroutine(Pickup());
+                        itemlock = true;
+                    }
+                }
+            }
+        }
+        else
+        {               //using an item movement
+            transform.position = Vector2.MoveTowards(transform.position, target, Time.deltaTime * 5f);
+
+            if (UseObj != null)
+            {
+                if (itemlock == false)
+                {
+                    if (Vector2.Distance(UseObj.transform.position, transform.position) < 1.2f)    //only do the action when close to door. Just walk to it until then
+                    {
+                        switch (UseObj.name)   //switch statement to find the prefab of the item's namesake
+                        {
+                            case "Green Interactible":
+                                if (storedUseItemRef == "Circle")
+                                {
+                                    InspectText.text = "I can combine these two.";
+                                    StartCoroutine(UseTextEnum());
+                                    itemUseBool = false;
+                                    itemlock = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    InspectText.text = "That doesn't work with that.";
+                                    StartCoroutine(UseTextEnum());
+                                    itemUseBool = false;
+                                    itemlock = true;
+                                    break;
+                                }
+                        }
+                    }
+                }
+            }
+            else
+                itemUseBool = false;
         }
     }
 }

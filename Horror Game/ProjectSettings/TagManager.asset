@@ -10,6 +10,7 @@ TagManager:
   - door
   - item
   - Inventory
+  - Interactable
   layers:
   - Default
   - TransparentFX

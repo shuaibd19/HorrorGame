@@ -6,6 +6,8 @@ using TMPro;
 
 public class InventoryItemUse : MonoBehaviour
 {
+    public GameObject Player;
+    private PlayerControl pc;
     public Button UseButton;
     public Button InspectButton;
     public GameObject panel;
@@ -21,6 +23,7 @@ public class InventoryItemUse : MonoBehaviour
         InspectButton.enabled = false;
         _active = false;
         InspectText.enabled = false;
+        pc = Player.GetComponent<PlayerControl>();
     }
 
     public void ClickOn()
@@ -29,6 +32,16 @@ public class InventoryItemUse : MonoBehaviour
         UseButton.enabled = true;
         InspectButton.enabled = true;
         _active = true;
+    }
+
+    public void Use()
+    {
+        switch (gameObject.name)   //switch statement to find the item
+        {
+            case "CirclePrefab":
+                pc.WhichUseItem("Circle");
+                break;
+        }
     }
 
     public void Inspect()
