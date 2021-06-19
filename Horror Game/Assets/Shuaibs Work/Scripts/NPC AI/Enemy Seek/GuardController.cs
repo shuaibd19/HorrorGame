@@ -43,6 +43,12 @@ public class GuardController : MonoBehaviour
         lastPlaceSeen = this.transform.position;
     }
 
+    //bool to check the direction of the character
+    [SerializeField] private bool facingRight = true;
+
+    //reference to the sprite renderer on the gameobject
+    private SpriteRenderer rend;
+
     private void Update()
     {
         //temporary variable to see if the state has changed

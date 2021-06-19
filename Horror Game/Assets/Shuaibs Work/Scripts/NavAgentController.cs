@@ -27,17 +27,13 @@ public class NavAgentController : MonoBehaviour
         //move to mouse click
         if (Input.GetMouseButtonDown(0)) 
         {
-            //checking for flipping the character sprite
-            //save the difference in vectors between the mouse click position and the players position
-            //var delta = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
-
-            
-
             RaycastHit hit;
             if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
                 this.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(hit.point);
+
+                //checking for flipping the character sprite
+                //save the difference in vectors between the mouse click position and the players position
                 var delta = hit.point - transform.position;
 
                 //Debug.Log(delta.x);

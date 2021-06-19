@@ -39,6 +39,12 @@ public class Civilian : MonoBehaviour
     //reference to the navigation agent 
     UnityEngine.AI.NavMeshAgent agent;
 
+    //bool to check the direction of the character
+    [SerializeField] private bool facingRight = true;
+
+    //reference to the sprite renderer on the gameobject
+    private SpriteRenderer rend;
+
     private void Start()
     {
         int seed = (int)transform.position.x;
@@ -50,6 +56,8 @@ public class Civilian : MonoBehaviour
 
         //cache a reference to our navigation agent
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+        rend = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -149,7 +157,30 @@ public class Civilian : MonoBehaviour
         //this.GetComponent<UnityEngine.AI.NavMeshAgent>().isStopped = true;
         //this.GetComponent<UnityEngine.AI.NavMeshAgent>().ResetPath();
 
-        agent.SetDestination(FindHidingSpot());
+        //direction checking
+
+        var point = FindHidingSpot();
+        
+        agent.SetDestination(point);
+
+        var delta = point - transform.position;
+
+        //Debug.Log(delta.x);
+
+        //if the mouse points at right side of the player
+        if (delta.x >= 0 && !facingRight)
+        {
+            //transform.localScale = new Vector3(1, 1, 1); //activate looking right
+            facingRight = true;
+            rend.flipX = true;
+        }
+        else if (delta.x < 0 && facingRight)
+        {
+            //mouse points to the left side of the player
+            //transform.localScale = new Vector3(-1, 1, 1);
+            facingRight = false;
+            rend.flipX = false;
+        }
     }
 
     private void FreeRoam()
@@ -170,6 +201,27 @@ public class Civilian : MonoBehaviour
                 0,
                 UnityEngine.Random.Range(-freeRoamDistance, freeRoamDistance)
                 );
+
+            //direction checking
+
+            var delta = freeRoamPoint - transform.position;
+
+            //Debug.Log(delta.x);
+
+            //if the mouse points at right side of the player
+            if (delta.x >= 0 && !facingRight)
+            {
+                //transform.localScale = new Vector3(1, 1, 1); //activate looking right
+                facingRight = true;
+                rend.flipX = true;
+            }
+            else if (delta.x < 0 && facingRight)
+            {
+                //mouse points to the left side of the player
+                //transform.localScale = new Vector3(-1, 1, 1);
+                facingRight = false;
+                rend.flipX = false;
+            }
 
             //make the generated point a goal for the agent
             agent.SetDestination(freeRoamPoint);
