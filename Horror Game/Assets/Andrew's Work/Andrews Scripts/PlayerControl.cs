@@ -62,6 +62,10 @@ public class PlayerControl : MonoBehaviour
                 {
                     itemObj = hit.collider.gameObject;  //store the item you just clicked
                 }
+                if (hit.collider.gameObject.tag == "Inventory")
+                {
+                    target = new Vector2(transform.position.x, transform.position.y);    //Nullify movement if you click on the inventory
+                }
             }
         }
         //move player toward target coords

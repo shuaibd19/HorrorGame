@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - guard
+  - player
+  - waypoint
+  - door
+  - item
+  - Inventory
   layers:
   - Default
   - TransparentFX
