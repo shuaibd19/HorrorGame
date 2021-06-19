@@ -7150,6 +7150,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 214043985}
+    - target: {fileID: 7572060037996378329, guid: a5be5f3c293074f4696f5a392f268a7f, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7572060037996378331, guid: a5be5f3c293074f4696f5a392f268a7f, type: 3}
       propertyPath: m_Name
       value: main Character
