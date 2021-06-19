@@ -26,6 +26,12 @@ public class EnemyAvoider : MonoBehaviour
 
     public bool playerSee = false;
 
+    //bool to check the direction of the character
+    [SerializeField] private bool facingRight = true;
+
+    //reference to the sprite renderer on the gameobject
+    private SpriteRenderer rend;
+
     //the start method is a coroutine; when the game starts it will start
     //a continuous cycle of avoiding the target
     IEnumerator Start()
@@ -33,8 +39,11 @@ public class EnemyAvoider : MonoBehaviour
         //cache a reference to our navigation agent
         agent = GetComponent<NavMeshAgent>();
 
+        rend = gameObject.GetComponent<SpriteRenderer>();
+
+
         //do this forever
-        while(true)
+        while (true)
         {
             //can the target see us?
             if(visibility.targetIsVisible)
@@ -51,6 +60,27 @@ public class EnemyAvoider : MonoBehaviour
 
                 //tell the agent to start moving to this locatiojn
                 agent.destination = hidingSpot;
+
+                //direction checking
+
+                var delta = hidingSpot - transform.position;
+
+                //Debug.Log(delta.x);
+
+                //if the mouse points at right side of the player
+                if (delta.x >= 0 && !facingRight)
+                {
+                    //transform.localScale = new Vector3(1, 1, 1); //activate looking right
+                    facingRight = true;
+                    rend.flipX = true;
+                }
+                else if (delta.x < 0 && facingRight)
+                {
+                    //mouse points to the left side of the player
+                    //transform.localScale = new Vector3(-1, 1, 1);
+                    facingRight = false;
+                    rend.flipX = false;
+                }
             }
 
             //wait a bit, and then check to see if the target can still see us
