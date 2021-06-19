@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class InventoryItemUse : MonoBehaviour
 {
     public Button UseButton;
     public Button InspectButton;
     public GameObject panel;
+
+    public TextMeshProUGUI InspectText;
 
     bool _active;
 
@@ -17,6 +20,7 @@ public class InventoryItemUse : MonoBehaviour
         UseButton.enabled = false;
         InspectButton.enabled = false;
         _active = false;
+        InspectText.enabled = false;
     }
 
     public void ClickOn()
@@ -25,6 +29,30 @@ public class InventoryItemUse : MonoBehaviour
         UseButton.enabled = true;
         InspectButton.enabled = true;
         _active = true;
+    }
+
+    public void Inspect()
+    {
+        StartCoroutine(InspectTimer());
+    }
+
+    IEnumerator InspectTimer()
+    {
+        switch (gameObject.name)   //switch statement to find the item
+        {
+            case "CirclePrefab":
+                InspectText.text = "It's a green testing circle.";
+                break;
+        }
+        InspectText.enabled = true;
+        panel.SetActive(false);
+        UseButton.enabled = false;
+        InspectButton.enabled = false;
+        _active = false;
+
+        yield return new WaitForSeconds(3.0f);
+
+        InspectText.enabled = false;
     }
 
     void Update()

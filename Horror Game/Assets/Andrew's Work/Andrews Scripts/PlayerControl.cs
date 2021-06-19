@@ -53,7 +53,6 @@ public class PlayerControl : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
             if (hit)
             {
-                Debug.Log(hit.collider.gameObject.name); //for testing
                 if (hit.collider.gameObject.tag == "door")                          //All clickable items need a collider on them and their tag appropriately set
                 {
                     doorObj = hit.collider.gameObject;  //store the doorway you just clicked
