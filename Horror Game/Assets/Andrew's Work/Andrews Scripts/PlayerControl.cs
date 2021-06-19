@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
 
     public Canvas UICanvas;
     bool itemlock = false;
-    bool itemUseBool = false;
+    public bool itemUseBool = false;
 
     IEnumerator Pickup()
     {
@@ -135,6 +135,7 @@ public class PlayerControl : MonoBehaviour
                                     InspectText.text = "I can combine these two.";
                                     StartCoroutine(UseTextEnum());
                                     itemUseBool = false;
+                                    itemlock = true;
                                     break;
                                 }
                                 else
@@ -142,14 +143,15 @@ public class PlayerControl : MonoBehaviour
                                     InspectText.text = "That doesn't work with that.";
                                     StartCoroutine(UseTextEnum());
                                     itemUseBool = false;
+                                    itemlock = true;
                                     break;
                                 }
                         }
-                        itemlock = true;
                     }
                 }
             }
+            else
+                itemUseBool = false;
         }
-
     }
 }
