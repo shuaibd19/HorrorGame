@@ -12,10 +12,4 @@ public class ItemInspect : MonoBehaviour
     {
         InspectText.gameObject.SetActive(false);
     }
-    
-    
-    void Update()
-    {
-        
-    }
 }
