@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 //script used for controlling a nav mesh agent
 [RequireComponent(typeof(NavMeshAgent))]
-public class NavAgentController : MonoBehaviour
+public class NavAgentControlCopy : MonoBehaviour
 {
     //radius of the noise
     [SerializeField] float noiseRadius = 20f;
@@ -25,7 +25,7 @@ public class NavAgentController : MonoBehaviour
     private void Update()
     {
         //move to mouse click
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, 100))

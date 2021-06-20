@@ -324,6 +324,7 @@ MonoBehaviour:
   CircleItem: {fileID: 7165066993894460875, guid: 4b90ad3ae6948b74aaa35bb36c1c6631, type: 3}
   InspectText: {fileID: 2007744441}
   UICanvas: {fileID: 566511285}
+  itemUseBool: 0
 --- !u!65 &190329592
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -709,7 +710,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8.46
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
