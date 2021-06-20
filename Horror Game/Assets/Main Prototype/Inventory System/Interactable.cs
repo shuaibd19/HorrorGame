@@ -15,8 +15,7 @@ public class Interactable : MonoBehaviour
 
         if (gameObject.tag == "door")
         {
-            var animation = GetComponent<Animation>();
-            animation.Play();
+            Debug.Log("I am a door!");
         }
     }
 }

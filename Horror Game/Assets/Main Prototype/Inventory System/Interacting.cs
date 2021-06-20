@@ -11,7 +11,7 @@ public class Interacting : MonoBehaviour
     [SerializeField] KeyCode interactionKey = KeyCode.F;
 
     //the range we can interact with objects
-    [SerializeField] float interactingRange = 1;
+    [SerializeField] float interactingRange = 3;
 
     private void Update()
     {
@@ -27,7 +27,7 @@ public class Interacting : MonoBehaviour
     {
         //create a ray from the current position and forward direction
         //first person camera ray cast
-        var ray = new Ray(transform.position, transform.forward);
+        var ray = new Ray(transform.position, transform.right);
 
         //third person camera ray cast
         //var ray = new Ray(transform.parent.position, transform.forward);
