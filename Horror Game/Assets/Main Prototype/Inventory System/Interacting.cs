@@ -13,6 +13,13 @@ public class Interacting : MonoBehaviour
     //the range we can interact with objects
     [SerializeField] float interactingRange = 3;
 
+    private SpriteRenderer rend;
+
+    private void Start()
+    {
+        rend = GetComponent<SpriteRenderer>();
+    }
+
     private void Update()
     {
         //did the user press the interaction key?
@@ -25,12 +32,27 @@ public class Interacting : MonoBehaviour
 
     private void AttemptInteraction()
     {
+        Ray ray;
         //create a ray from the current position and forward direction
         //first person camera ray cast
-        var ray = new Ray(transform.position, transform.right);
+        //var ray = new Ray(transform.position, transform.right);
 
         //third person camera ray cast
         //var ray = new Ray(transform.parent.position, transform.forward);
+
+        //if player is facing right
+        if (rend.flipX)
+        {
+            //shoot a ray down the x axis
+            ray = new Ray(transform.position, transform.right);
+        }
+        else
+        {
+            //shoot a ray down - x axis
+            ray = new Ray(transform.position, -transform.right);
+        }
+
+
 
         //store information about the ray hit
         RaycastHit hit;

@@ -17,5 +17,10 @@ public class Interactable : MonoBehaviour
         {
             Debug.Log("I am a door!");
         }
+
+        if (gameObject.tag == "item")
+        {
+            Debug.Log("I am an item!");
+        }
     }
 }
