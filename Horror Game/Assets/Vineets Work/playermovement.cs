@@ -2,9 +2,10 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Rigidbody))]
 public class playermovement : MonoBehaviour
 {
-    public float moveForce = 0f;
+    public float moveForce = 10f;
     private Rigidbody rb;
     public int HP = 0;
     //public Slider HPBar;
