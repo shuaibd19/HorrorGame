@@ -11,7 +11,7 @@ public class Interacting : MonoBehaviour
     [SerializeField] KeyCode interactionKey = KeyCode.F;
 
     //the range we can interact with objects
-    [SerializeField] float interactingRange = 2;
+    [SerializeField] float interactingRange = 1;
 
     private void Update()
     {

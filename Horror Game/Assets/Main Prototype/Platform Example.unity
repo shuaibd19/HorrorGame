@@ -4760,13 +4760,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06dd3fd1867c7347978705631781580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {x: 0, y: 0}
   doorObj: {fileID: 0}
   itemObj: {fileID: 0}
   UseObj: {fileID: 0}
   ItemSlot1: {fileID: 0}
+  prefabItem: {fileID: 0}
   CircleItem: {fileID: 0}
+  storedUseItemRef: 
   InspectText: {fileID: 0}
   UICanvas: {fileID: 0}
+  itemlock: 0
   itemUseBool: 0
 --- !u!1 &1507896036
 GameObject:
@@ -7270,6 +7274,10 @@ PrefabInstance:
     - target: {fileID: 7572060037996378331, guid: a5be5f3c293074f4696f5a392f268a7f, type: 3}
       propertyPath: m_Name
       value: main Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572060037996378331, guid: a5be5f3c293074f4696f5a392f268a7f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7572060037996378332, guid: a5be5f3c293074f4696f5a392f268a7f, type: 3}
       propertyPath: cam

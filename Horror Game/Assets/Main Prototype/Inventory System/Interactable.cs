@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
     {
         Debug.LogFormat("I've been interacted with by {0}!", fromObject);
 
-        if (gameObject.tag == "Door")
+        if (gameObject.tag == "door")
         {
             var animation = GetComponent<Animation>();
             animation.Play();
