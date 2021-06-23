@@ -7313,6 +7313,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7572060037996378331, guid: a5be5f3c293074f4696f5a392f268a7f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7572060037996378332, guid: a5be5f3c293074f4696f5a392f268a7f, type: 3}
       propertyPath: cam
       value: 
